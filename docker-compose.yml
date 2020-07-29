@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+
+  dockertesterservice:
+    environment: 
+        - ASPNETCORE_ENVIRONMENT=Development
+        - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+        - 5501:443
+    image: ${DOCKER_REGISTRY-}dockertesterservice
+    container_name: "Service_1"
+    build:
+      context: .
+      dockerfile: DockerTesterService\Dockerfile
+
+
+  dockertesterservice2:
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+        - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+        - 5502:443
+    image: ${DOCKER_REGISTRY-}dockertesterservice
+    container_name: "Service_2"
+    build:
+      context: .
+      dockerfile: DockerTesterService\Dockerfile
+
+
+  dockertesterservice3:
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+        - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+        - 5503:443   
+    image: ${DOCKER_REGISTRY-}dockertesterservice
+    container_name: "Service_3"
+    build:
+      context: .
+      dockerfile: DockerTesterService\Dockerfile
